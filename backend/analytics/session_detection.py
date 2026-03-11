@@ -6,6 +6,7 @@ SESSION_GAP = timedelta(minutes=30)
 
 
 def get_listens():
+
     conn = get_connection()
     cursor = conn.cursor()
 
@@ -30,11 +31,17 @@ def detect_sessions(listens):
 
     last_time = None
 
-    for track_name, artist_name, played_at in listens:
+    for listen in listens:
+
+        track_name = listen.track_name
+        artist_name = listen.artist_name
+        played_at = listen.played_at
 
         if last_time is None:
             current_session.append((track_name, artist_name, played_at))
+
         else:
+
             gap = played_at - last_time
 
             if gap > SESSION_GAP:
@@ -50,13 +57,14 @@ def detect_sessions(listens):
 
     return sessions
 
-
 def main():
+
     listens = get_listens()
 
     sessions = detect_sessions(listens)
 
     for i, session in enumerate(sessions, start=1):
+
         print(f"\nSession {i}")
 
         for track in session:
