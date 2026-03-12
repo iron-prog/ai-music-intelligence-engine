@@ -4,6 +4,7 @@ from backend.analytics.discovery_analytics import discovery_stats
 from backend.analytics.listening_patterns import listening_patterns
 from backend.analytics.mood_analysis import mood_analysis
 from backend.intelligence.discovery_engine import compute_discovery_intelligence
+from backend.intelligence.habit_clustering import classify_listening_behavior
 
 def run():
 
@@ -22,6 +23,8 @@ def run():
     mood_analysis()
 
     compute_discovery_intelligence()
+
+    classify_listening_behavior()
 
     print("\nPipeline completed")
 
