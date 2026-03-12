@@ -3,6 +3,7 @@ from backend.analytics.session_detection import detect_sessions
 from backend.analytics.discovery_analytics import discovery_stats
 from backend.analytics.listening_patterns import listening_patterns
 from backend.analytics.mood_analysis import mood_analysis
+from backend.intelligence.discovery_engine import compute_discovery_intelligence
 
 def run():
 
@@ -19,6 +20,8 @@ def run():
     listening_patterns()
 
     mood_analysis()
+
+    compute_discovery_intelligence()
 
     print("\nPipeline completed")
 
